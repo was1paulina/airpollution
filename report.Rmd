@@ -1,0 +1,26 @@
+---
+title: "Air pollution in the Czech Republic (2013-2018)"
+output: word_document:
+  theme: yeti
+---
+
+## Plot
+```{r echo=FALSE}
+
+```
+
+## Map
+```{r echo=FALSE}
+renderPlot({
+        maps::map("world", "CZech Republic")
+        points(useData()$Longitude, useData()$Latitude, pch = 16, col = "blue")
+        text(useData()$Longitude, y = useData()$Latitude, useData()$StationName, pos = 4)
+    })
+```
+
+## Table
+```{r echo=FALSE}
+DT::renderDT({
+        useData()
+    })
+```
